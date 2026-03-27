@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treino Certo, Resultado na Prova — Pack de 8 Planilhas de Corrida</title>
+<meta name="description" content="8 planilhas profissionais de corrida — do zero à maratona. Treino estruturado por apenas R$37.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0A0A0A;
+  --bg-alt: #141414;
+  --card-bg: #1A1A1A;
+  --green: #00C96A;
+  --green-dark: #00A355;
+  --green-dim: rgba(0,201,106,0.10);
+  --orange: #E8622A;
+  --text: #F0F0F0;
+  --text-sec: #888888;
+  --border: rgba(255,255,255,0.08);
+  --border-card: rgba(255,255,255,0.06);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* ========== SECTION DIVIDER ========== */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  border: none;
+  margin: 0;
+}
+
+/* ========== SECTION LABEL ========== */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+
+/* ========== SECTION H2 ========== */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 64px);
+  letter-spacing: 1px;
+  line-height: 1.05;
+  color: var(--text);
+  margin-bottom: 48px;
+}
+
+/* ========== CTA BUTTON ========== */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: #000;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 36px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(0,201,106,0.25);
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  text-decoration: none;
+}
+.btn-cta:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 0 32px rgba(0,201,106,0.35);
+}
+.btn-cta-sm {
+  padding: 12px 28px;
+  font-size: 14px;
+}
+.btn-cta-lg {
+  padding: 20px 48px;
+  font-size: 18px;
+}
+
+/* ========== 1. BARRA DE URGÊNCIA ========== */
+.urgency-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--green);
+  color: #000;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ========== 2. NAV ========== */
+.nav {
+  position: fixed;
+  top: 37px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: var(--green);
+}
+
+/* ========== 3. HERO ========== */
+.hero {
+  position: relative;
+  padding: 180px 0 100px;
+  text-align: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(0,201,106,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero .container { position: relative; z-index: 1; }
+
+.hero-badge {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--green);
+  border: 1px solid rgba(0,201,106,0.35);
+  border-radius: 100px;
+  padding: 8px 20px;
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 11vw, 108px);
+  letter-spacing: 2px;
+  line-height: 0.95;
+  margin-bottom: 8px;
+}
+.hero h1 .green-line {
+  color: var(--green);
+  display: block;
+}
+
+.hero-text {
+  max-width: 600px;
+  margin: 24px auto 0;
+  font-size: 18px;
+  color: var(--text-sec);
+  line-height: 1.7;
+}
+
+.hero-price-block {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.hero-price-old {
+  font-size: 18px;
+  color: var(--text-sec);
+  text-decoration: line-through;
+}
+.hero-price-new {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 8vw, 80px);
+  color: var(--green);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.hero-price-info {
+  font-size: 14px;
+  color: var(--text-sec);
+  margin-top: 4px;
+}
+
+.hero .btn-cta { margin-top: 32px; }
+
+.hero-guarantee {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--text-sec);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.hero-guarantee svg { flex-shrink: 0; }
+
+/* ========== 4. STATS BAR ========== */
+.stats {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 0;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+}
+.stat-item { padding: 0 24px; }
+.stat-item + .stat-item { border-left: 1px solid var(--border); }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 56px);
+  color: var(--green);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 14px;
+  color: var(--text-sec);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* ========== 5. PROBLEMA ========== */
+.problema {
+  padding: 96px 0;
+  background: var(--bg);
+}
+.pain-list {
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pain-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+}
+.pain-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(232,98,42,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--orange);
+  margin-top: 2px;
+}
+
+/* ========== 6. SOLUÇÃO ========== */
+.solucao {
+  padding: 96px 0;
+  background: var(--bg-alt);
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.feature-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  padding: 32px 28px;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.feature-card:hover {
+  border-color: rgba(0,201,106,0.25);
+  transform: translateY(-2px);
+}
+.feature-card.full-width {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(0,201,106,0.08), rgba(0,201,106,0.03));
+  border-color: rgba(0,201,106,0.15);
+}
+.card-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green);
+  background: var(--green-dim);
+  border-radius: 100px;
+  padding: 5px 12px;
+  margin-bottom: 16px;
+}
+.card-tag.bonus { background: rgba(0,201,106,0.15); }
+.card-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.card-desc {
+  font-size: 15px;
+  color: var(--text-sec);
+  line-height: 1.6;
+}
+.card-bonus-list {
+  font-size: 17px;
+  color: var(--text);
+  line-height: 2;
+}
+
+/* ========== 7. PARA QUEM É ========== */
+.para-quem {
+  padding: 96px 0;
+  background: var(--bg);
+}
+.target-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.target-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.target-card:hover {
+  border-color: rgba(0,201,106,0.25);
+  transform: translateY(-2px);
+}
+.target-check {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--green-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.target-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* ========== 8. DEPOIMENTOS ========== */
+.depoimentos {
+  padding: 96px 0;
+  background: var(--bg-alt);
+}
+.dep-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.dep-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  padding: 32px 28px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.dep-card:hover {
+  border-color: rgba(0,201,106,0.25);
+  transform: translateY(-2px);
+}
+.dep-stars {
+  color: #F5A623;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.dep-text {
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.dep-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.dep-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--green-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--green);
+}
+.dep-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+.dep-location {
+  font-size: 13px;
+  color: var(--text-sec);
+}
+
+/* ========== 9. COMPRA ========== */
+.compra {
+  padding: 96px 0;
+  background: var(--bg);
+  text-align: center;
+}
+.compra-card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border: 1px solid rgba(0,201,106,0.2);
+  border-radius: 20px;
+  padding: 48px 40px;
+  text-align: center;
+}
+.compra-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #000;
+  background: var(--green);
+  border-radius: 100px;
+  padding: 6px 16px;
+  margin-bottom: 24px;
+}
+.compra-name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+.compra-old {
+  font-size: 18px;
+  color: var(--text-sec);
+  text-decoration: line-through;
+}
+.compra-price {
+  font-family: var(--font-display);
+  font-size: 72px;
+  color: var(--green);
+  letter-spacing: 2px;
+  line-height: 1;
+  margin: 8px 0;
+}
+.compra-desc {
+  font-size: 15px;
+  color: var(--text-sec);
+  margin-bottom: 28px;
+}
+.compra-list {
+  text-align: left;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.compra-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+}
+.compra-list li .check {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.compra-garantia {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-sec);
+}
+
+/* ========== 10. FAQ ========== */
+.faq {
+  padding: 96px 0;
+  background: var(--bg-alt);
+}
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.faq-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.faq-item.active { border-color: rgba(0,201,106,0.2); }
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-body);
+  transition: color 0.2s;
+}
+.faq-question:hover { color: var(--green); }
+.faq-toggle {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--text-sec);
+  transition: transform 0.3s, color 0.3s;
+}
+.faq-item.active .faq-toggle {
+  transform: rotate(45deg);
+  color: var(--green);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.faq-answer-inner {
+  padding: 0 24px 20px;
+  font-size: 15px;
+  color: var(--text-sec);
+  line-height: 1.7;
+}
+
+/* ========== 11. RODAPÉ ========== */
+.footer {
+  padding: 48px 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+.footer-text {
+  font-size: 14px;
+  color: var(--text-sec);
+  margin-bottom: 6px;
+}
+.footer-copy {
+  font-size: 13px;
+  color: #555;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .target-grid { grid-template-columns: repeat(2, 1fr); }
+  .dep-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; gap: 32px; }
+  .stat-item + .stat-item { border-left: none; border-top: 1px solid var(--border); padding-top: 32px; }
+}
+@media (max-width: 600px) {
+  .hero { padding: 150px 0 72px; }
+  .target-grid { grid-template-columns: 1fr; }
+  .compra-card { padding: 36px 24px; }
+  .compra-price { font-size: 56px; }
+  .btn-cta-lg { padding: 18px 36px; font-size: 16px; }
+  .nav-logo { font-size: 20px; }
+  .hero-text { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 1. BARRA DE URGÊNCIA -->
+<div class="urgency-bar">
+  🔥 Oferta de lançamento — apenas R$37 por tempo limitado
+</div>
+
+<!-- 2. NAV -->
+<nav class="nav">
+  <div class="container">
+    <a href="#" class="nav-logo">TREINO CERTO</a>
+    <a href="#comprar" class="btn-cta btn-cta-sm">Quero meu pack →</a>
+  </div>
+</nav>
+
+<!-- 3. HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="hero-badge">Pack de Planilhas de Corrida</span>
+    <h1>
+      TREINO CERTO,
+      <span class="green-line">RESULTADO NA PROVA.</span>
+    </h1>
+    <p class="hero-text">8 planilhas profissionais de corrida — do zero à maratona. Tudo que você precisa para treinar com inteligência e chegar forte na linha de chegada.</p>
+    <div class="hero-price-block">
+      <span class="hero-price-old">De R$97</span>
+      <span class="hero-price-new">R$ 37</span>
+      <span class="hero-price-info">Pagamento único · Acesso vitalício · Download imediato</span>
+    </div>
+    <a href="#comprar" class="btn-cta btn-cta-lg">Garantir meu pack agora →</a>
+    <div class="hero-guarantee">
+      <svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M7 0L0 3v4.5c0 4.14 2.99 8.02 7 8.5 4.01-.48 7-4.36 7-8.5V3L7 0z" fill="#888"/><path d="M5.5 10.5L3.5 8.5l-1 1 3 3 6-6-1-1-5 5z" fill="#0A0A0A"/></svg>
+      Garantia de 7 dias. Se não gostar, devolvemos 100%.
+    </div>
+  </div>
+</section>
+
+<!-- 4. STATS BAR -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">8</div>
+        <div class="stat-label">planilhas profissionais incluídas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">36</div>
+        <div class="stat-label">semanas de treino estruturado</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">R$37</div>
+        <div class="stat-label">investimento único — menos que 1 gel de carboidrato por semana</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 5. PROBLEMA -->
+<section class="problema">
+  <div class="container">
+    <div class="section-label">O PROBLEMA</div>
+    <h2 class="section-title">VOCÊ CORRE. MAS TREINA<br>DO JEITO CERTO?</h2>
+    <ul class="pain-list">
+      <li class="pain-item">
+        <span class="pain-icon">✕</span>
+        <span>Treina sem estrutura e chega lesionado antes da prova</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">✕</span>
+        <span>Vai rápido demais nas primeiras semanas e regride em vez de evoluir</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">✕</span>
+        <span>Não sabe qual pace usar em cada tipo de treino</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">✕</span>
+        <span>Para no km 8 sem entender o porquê — e se culpa por isso</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">✕</span>
+        <span>Paga R$200-500/mês em assessoria quando não precisaria</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 6. SOLUÇÃO -->
+<section class="solucao">
+  <div class="container">
+    <div class="section-label">O QUE VOCÊ RECEBE</div>
+    <h2 class="section-title">8 PLANILHAS QUE VÃO<br>MUDAR SEU TREINO</h2>
+    <div class="cards-grid">
+      <div class="feature-card">
+        <span class="card-tag">8 semanas</span>
+        <div class="card-title">🟢 Iniciante — 5 km</div>
+        <p class="card-desc">Método caminhada/corrida com evolução gradual. Do zero ao primeiro 5 km contínuo.</p>
+      </div>
+      <div class="feature-card">
+        <span class="card-tag">12 semanas</span>
+        <div class="card-title">🟡 Intermediário — 10 km</div>
+        <p class="card-desc">Intervalos, tempo e long run com periodização. Para quem quer sair dos 5 km.</p>
+      </div>
+      <div class="feature-card">
+        <span class="card-tag">16 semanas</span>
+        <div class="card-title">🔴 Meia-Maratona — 21 km</div>
+        <p class="card-desc">Periodização completa: base → desenvolvimento → pico → taper → prova.</p>
+      </div>
+      <div class="feature-card">
+        <span class="card-tag">20 semanas</span>
+        <div class="card-title">🏆 Maratona — 42 km</div>
+        <p class="card-desc">Programa avançado com strides, corridas por zona de FC e pico de 58 km/semana.</p>
+      </div>
+      <div class="feature-card full-width">
+        <span class="card-tag bonus">BÔNUS INCLUSOS</span>
+        <div class="card-bonus-list">
+          ⚡ Biblioteca de Velocidade &nbsp;+&nbsp; ⚙️ Calculadora de Pace e Zonas &nbsp;+&nbsp; 💪 Força & Mobilidade &nbsp;+&nbsp; 🥗 Nutrição & Hidratação
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 7. PARA QUEM É -->
+<section class="para-quem">
+  <div class="container">
+    <div class="section-label">PARA QUEM É</div>
+    <h2 class="section-title">ESSE PACK É PARA VOCÊ SE...</h2>
+    <div class="target-grid">
+      <div class="target-card">
+        <span class="target-check">✓</span>
+        <span class="target-text">Quer começar a correr do zero com segurança</span>
+      </div>
+      <div class="target-card">
+        <span class="target-check">✓</span>
+        <span class="target-text">Já corre mas nunca seguiu uma planilha de verdade</span>
+      </div>
+      <div class="target-card">
+        <span class="target-check">✓</span>
+        <span class="target-text">Quer completar a primeira meia ou maratona</span>
+      </div>
+      <div class="target-card">
+        <span class="target-check">✓</span>
+        <span class="target-text">Quer bater o próprio recorde pessoal (PR)</span>
+      </div>
+      <div class="target-card">
+        <span class="target-check">✓</span>
+        <span class="target-text">Quer entender zonas de FC, pace e periodização</span>
+      </div>
+      <div class="target-card">
+        <span class="target-check">✓</span>
+        <span class="target-text">Quer evitar lesões treinando com progressão inteligente</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 8. DEPOIMENTOS -->
+<section class="depoimentos">
+  <div class="container">
+    <div class="section-label" style="text-align:center;">DEPOIMENTOS</div>
+    <h2 class="section-title" style="text-align:center;">QUEM JÁ TREINA COM O PACK</h2>
+    <div class="dep-grid">
+      <div class="dep-card">
+        <div class="dep-stars">★★★★★</div>
+        <p class="dep-text">"Segui a planilha de iniciante do zero e completei meu primeiro 5 km em 7 semanas. Nunca pensei que conseguiria. A progressão é perfeita."</p>
+        <div class="dep-author">
+          <div class="dep-avatar">LM</div>
+          <div>
+            <div class="dep-name">Luisa M.</div>
+            <div class="dep-location">São Paulo</div>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card">
+        <div class="dep-stars">★★★★★</div>
+        <p class="dep-text">"A calculadora de zonas mudou tudo. Parei de correr no feeling e quebrei meu PR no 10 km em 3 minutos na primeira prova."</p>
+        <div class="dep-author">
+          <div class="dep-avatar">RK</div>
+          <div>
+            <div class="dep-name">Rafael K.</div>
+            <div class="dep-location">Curitiba</div>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card">
+        <div class="dep-stars">★★★★★</div>
+        <p class="dep-text">"Usei a planilha de meia-maratona e completei minha primeira meia em 2h18. O programa de taper é sensacional."</p>
+        <div class="dep-author">
+          <div class="dep-avatar">CT</div>
+          <div>
+            <div class="dep-name">Camila T.</div>
+            <div class="dep-location">Belo Horizonte</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 9. COMPRA -->
+<section class="compra" id="comprar">
+  <div class="container">
+    <h2 class="section-title">INVISTA NO SEU TREINO HOJE</h2>
+    <div class="compra-card">
+      <span class="compra-badge">OFERTA DE LANÇAMENTO</span>
+      <div class="compra-name">Treino Certo, Resultado na Prova</div>
+      <div class="compra-old">De R$97</div>
+      <div class="compra-price">R$ 37</div>
+      <div class="compra-desc">Pagamento único — sem mensalidade. Acesso para sempre.</div>
+      <ul class="compra-list">
+        <li><span class="check">✓</span> Planilha Iniciante — 5 km (8 semanas)</li>
+        <li><span class="check">✓</span> Planilha Intermediário — 10 km (12 semanas)</li>
+        <li><span class="check">✓</span> Planilha Meia-Maratona — 21 km (16 semanas)</li>
+        <li><span class="check">✓</span> Planilha Maratona — 42 km (20 semanas)</li>
+        <li><span class="check">✓</span> Biblioteca de Velocidade</li>
+        <li><span class="check">✓</span> Calculadora de Pace e Zonas de FC</li>
+        <li><span class="check">✓</span> Programa de Força & Mobilidade</li>
+        <li><span class="check">✓</span> Guia de Nutrição & Hidratação</li>
+      </ul>
+      <a href="https://pay.kiwify.com.br/SEU-LINK" target="_blank" class="btn-cta btn-cta-lg" style="width:100%;justify-content:center;">GARANTIR MEU PACK — R$37 →</a>
+      <div class="compra-garantia">
+        <svg width="16" height="18" viewBox="0 0 14 16" fill="none"><path d="M7 0L0 3v4.5c0 4.14 2.99 8.02 7 8.5 4.01-.48 7-4.36 7-8.5V3L7 0z" fill="#00C96A"/><path d="M5.5 10.5L3.5 8.5l-1 1 3 3 6-6-1-1-5 5z" fill="#0A0A0A"/></svg>
+        7 dias de garantia incondicional. Não gostou? Devolução de 100% sem burocracia.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 10. FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-label" style="text-align:center;">FAQ</div>
+    <h2 class="section-title" style="text-align:center;">PERGUNTAS FREQUENTES</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Preciso ter experiência com planilhas ou Excel?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Não. As planilhas são simples de usar — basta abrir e seguir. Funcionam no Excel, Google Planilhas e LibreOffice gratuitamente.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Para qual nível é indicado?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Para todos — temos planilha específica para quem nunca correu até quem quer fazer maratona. Você escolhe o programa que se encaixa no seu momento atual.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Como recebo após a compra?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Imediatamente após o pagamento você recebe o link de download por e-mail. O acesso é vitalício — o arquivo fica com você para sempre.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>E se eu não gostar?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Você tem 7 dias de garantia total. Se por qualquer motivo não ficar satisfeito, basta enviar um e-mail e devolvemos 100% do valor — sem perguntas.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>As planilhas funcionam para quem treina sem técnico?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sim! Elas foram criadas exatamente para isso — dar a estrutura que um técnico daria, de forma acessível e que você possa seguir sozinho no seu ritmo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. RODAPÉ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">TREINO CERTO</div>
+    <p class="footer-text">Treino Certo, Resultado na Prova · Produto digital · Entrega imediata</p>
+    <p class="footer-copy">© 2025 · Todos os direitos reservados</p>
+  </div>
+</footer>
+
+<!-- JS: FAQ Accordion + Smooth Scroll -->
+<script>
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-answer');
+    const isActive = item.classList.contains('active');
+
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('active');
+      i.querySelector('.faq-answer').style.maxHeight = null;
+    });
+
+    // Open clicked (if wasn't active)
+    if (!isActive) {
+      item.classList.add('active');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
+</script>
+</body>
+</html>
